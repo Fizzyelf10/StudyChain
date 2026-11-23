@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StudyChain</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#/">StudyChain</a>
+    <nav id="nav" aria-label="Main"></nav>
+  </header>
+  <main id="app" class="page" aria-live="polite"></main>
+  <div id="toast" class="toast" role="status"></div>
+  <footer class="footer">Payments are held in an escrow contract. StudyChain never holds your funds.</footer>
+
+  <!-- ethers.js talks to the user's wallet (MetaMask). Only needed when the backend runs in rpc mode. -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

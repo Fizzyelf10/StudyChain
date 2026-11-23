@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: studychain-api
+  datasource:
+    # In-memory H2 that behaves like PostgreSQL. Data disappears when the app stops.
+    # Use the "postgres" profile (see application-postgres.yml) for a real database.
+    url: jdbc:h2:mem:studychain;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+  jpa:
+    open-in-view: false
+    hibernate:
+      # Flyway owns the schema. Hibernate must not change it.
+      ddl-auto: none
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 26MB
+
+server:
+  port: 8080
+
+studychain:
+  # The account registered with this email becomes the admin (moderation screens).
+  admin-email: admin@studychain.local
+  jwt:
+    # At least 32 characters. Override with the JWT_SECRET environment variable outside development.
+    secret: ${JWT_SECRET:dev-only-secret-change-me-at-least-32-bytes-long!!}
+    expiration-minutes: 120
+  storage:
+    directory: ./data/files
+  chain:
+    # mock = escrow simulated inside the backend (no blockchain needed, great for demos)
+    # rpc  = real escrow contract, read through a JSON-RPC node (see README)
+    mode: mock
+    rpc-url: http://127.0.0.1:8545
+    chain-id: 11155111
+    escrow-contract: ""
+    token-contract: ""

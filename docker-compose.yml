@@ -1,0 +1,17 @@
+# Optional: a real PostgreSQL database for the "postgres" profile.
+#   docker compose up -d
+# Then start the app with:  --spring.profiles.active=postgres
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: studychain
+      POSTGRES_USER: studychain
+      POSTGRES_PASSWORD: studychain
+    ports:
+      - "5432:5432"
+    volumes:
+      - studychain-db:/var/lib/postgresql/data
+
+volumes:
+  studychain-db:
